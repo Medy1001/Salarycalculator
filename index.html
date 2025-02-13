@@ -91,10 +91,10 @@
     </div>
     <div class="results-container">
         <h2>입력방법 및 계산결과</h2>
-        <p>1. 월급을 시급으로, 시급을 월급으로 또는 주급 및 연봉으로 계산합니다.</p>
+        <p>1. <span style="color: red;">월급</span>을 <span style="color: red;">시급</span>으로, <span style="color: red;">시급</span>을 <span style="color: red;">일급</span>, <span style="color: red;">월급</span>, <span style="color: red;">주급</span> 또는 <span style="color: red;">연봉</span>으로 계산합니다.</p>
         <p>2. 먼저 급여 형태를 선택하신 후 금액을 입력하고, 근무 시간을 시간, 분 단위로 선택하고, 주별 근무일수를 선택한 다음 세금을 선택해주세요.</p>
-        <p>3. 9.4%는 4대보험 기준이며, 3.3%는 프리랜서 또는 계약직(4대보험 미가입) 기준입니다.</p>
-        <p>4. 수습 여부를 선택하면 기본 급여에서 10%를 차감한 후 세액 공제를 하여 최종 결과값을 도출합니다.</p>
+        <p>3. <span style="color: blue;">9.4%</span>는 <span style="color: blue;">4대보험</span> 기준이며, <span style="color: blue;">3.3%</span>는 <span style="color: blue;">프리랜서</span> 또는 <span style="color: blue;">계약직</span>(4대보험 미가입) 기준입니다.</p>
+        <p>4. <span style="color: blue;">수습 여부</span>를 선택하면 기본 급여에서 10%를 차감한 후 세액 공제를 하여 최종 결과값을 도출합니다.</p>
         <table style="width: 100%; border-collapse: collapse;">
             <thead>
                 <tr>
@@ -127,7 +127,7 @@
         </table>
         <div class="button-group" style="display: flex; justify-content: space-between; margin-top: 20px;">
             <button id="copyButton" onclick="copyResults()">복사하기</button>
-            <button id="shareButton" onclick="shareResults()">공유하기</button>
+            <button id="shareButton" onclick="shareMessage()">공유하기</button>
         </div>
     </div>
     <script src="script.js"></script>
