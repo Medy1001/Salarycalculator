@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>급여 계산기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>급여 계산기</h1>
+        <div class="input-group">
+            <label for="payType">급여 형태:</label>
+            <select id="payType">
+                <option value="hourly">시급</option>
+                <option value="daily">일급</option>
+                <option value="weekly">주급</option>
+                <option value="monthly">월급</option>
+                <option value="yearly">연봉</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="amount">금액:</label>
+            <input type="number" id="amount" placeholder="금액 입력">
+        </div>
+        <div class="input-group">
+            <label for="workHours">일 근무시간:</label>
+            <div style="display: flex; gap: 10px;">
+                <select id="workHoursHours">
+                    <option value="0">0시간</option>
+                    <option value="1">1시간</option>
+                    <option value="2">2시간</option>
+                    <option value="3">3시간</option>
+                    <option value="4">4시간</option>
+                    <option value="5">5시간</option>
+                    <option value="6">6시간</option>
+                    <option value="7">7시간</option>
+                    <option value="8">8시간</option>
+                    <option value="9">9시간</option>
+                    <option value="10">10시간</option>
+                    <option value="11">11시간</option>
+                    <option value="12">12시간</option>
+                    <option value="13">13시간</option>
+                    <option value="14">14시간</option>
+                    <option value="15">15시간</option>
+                    <option value="16">16시간</option>
+                    <option value="17">17시간</option>
+                    <option value="18">18시간</option>
+                    <option value="19">19시간</option>
+                    <option value="20">20시간</option>
+                    <option value="21">21시간</option>
+                    <option value="22">22시간</option>
+                    <option value="23">23시간</option>
+                    <option value="24">24시간</option>
+                </select>
+                <select id="workHoursMinutes">
+                    <option value="0">0분</option>
+                    <option value="10">10분</option>
+                    <option value="20">20분</option>
+                    <option value="30">30분</option>
+                    <option value="40">40분</option>
+                    <option value="50">50분</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="workDays">근무일수:</label>
+            <select id="workDays">
+                <option value="1">1일</option>
+                <option value="2">2일</option>
+                <option value="3">3일</option>
+                <option value="4">4일</option>
+                <option value="5">5일</option>
+                <option value="6">6일</option>
+                <option value="7">7일</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="tax">세금 적용:</label>
+            <select id="tax">
+                <option value="0">없음</option>
+                <option value="0.094">9.4% (4대보험)</option>
+                <option value="0.033">3.3% (프리랜서, 계약직)</option>
+            </select>
+        </div>
+        <div class="input-group" style="display: flex; align-items: center;">
+            <label for="probation" id="probationLabel">수습 여부:</label>
+            <input type="checkbox" id="probation">
+        </div>
+        <button onclick="calculate()">계산</button>
+    </div>
+    <div class="results-container">
+        <h2>입력방법 및 계산결과</h2>
+        <p>1. 월급을 시급으로, 시급을 월급으로 또는 주급 및 연봉으로 계산합니다.</p>
+        <p>2. 먼저 급여 형태를 선택하신 후 금액을 입력하고, 근무 시간을 시간, 분 단위로 선택하고, 주별 근무일수를 선택한 다음 세금을 선택해주세요.</p>
+        <p>3. 9.4%는 4대보험 기준이며, 3.3%는 프리랜서 또는 계약직(4대보험 미가입) 기준입니다.</p>
+        <p>4. 수습 여부를 선택하면 기본 급여에서 10%를 차감한 후 세액 공제를 하여 최종 결과값을 도출합니다.</p>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="text-align: left;">급여 유형</th>
+                    <th style="text-align: right;">금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>시급:</td>
+                    <td style="text-align: right;"><span id="hourlyResult"></span></td>
+                </tr>
+                <tr>
+                    <td>일급:</td>
+                    <td style="text-align: right;"><span id="dailyResult"></span></td>
+                </tr>
+                <tr>
+                    <td>주급:</td>
+                    <td style="text-align: right;"><span id="weeklyResult"></span></td>
+                </tr>
+                <tr>
+                    <td>월급:</td>
+                    <td style="text-align: right;"><span id="monthlyResult"></span></td>
+                </tr>
+                <tr>
+                    <td>연봉:</td>
+                    <td style="text-align: right;"><span id="yearlyResult"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="button-group" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <button id="copyButton" onclick="copyResults()">복사하기</button>
+            <button id="shareButton" onclick="shareResults()">공유하기</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
