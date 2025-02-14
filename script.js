@@ -72,27 +72,48 @@ function copyResults() {
     });
 }
 
-function shareResults() {
-    const results = `
-        시급: ${document.getElementById('hourlyResult').textContent}
-        일급: ${document.getElementById('dailyResult').textContent}
-        주급: ${document.getElementById('weeklyResult').textContent}
-        월급: ${document.getElementById('monthlyResult').textContent}
-        연봉: ${document.getElementById('yearlyResult').textContent}
+function shareMessage() {
+    if (typeof Kakao === 'undefined' || !Kakao.isInitialized()) {
+        console.error('Kakao SDK가 초기화되지 않았습니다.');
+        return;
+    }
+
+    const resultText = `
+        시급: ${document.getElementById('hourlyResult').innerText}
+        일급: ${document.getElementById('dailyResult').innerText}
+        주급: ${document.getElementById('weeklyResult').innerText}
+        월급: ${document.getElementById('monthlyResult').innerText}
+        연봉: ${document.getElementById('yearlyResult').innerText}
     `;
-    const url = `https://story.kakao.com/share?url=${encodeURIComponent(results)}`;
-    window.open(url, '_blank');
+    
+    // if (Kakao.Link && Kakao.Link.sendDefault) {
+    //     Kakao.Link.sendDefault({
+    //         objectType: 'text',
+    //         text: resultText,
+    //         link: {
+    //             webUrl: 'https://tubular-klepon-602186.netlify.app/', // 공유할 웹사이트 URL
+    //             mobileWebUrl: 'https://tubular-klepon-602186.netlify.app/',
+    //         },
+    //         buttonTitle: '결과 보기'
+    //     }).then(() => {
+    //         console.log('공유가 성공적으로 전송되었습니다.');
+    //     }).catch((error) => {
+    //         console.error('공유 전송 중 오류 발생:', error);
+    //     });
+    // } else {
+    //     console.error('Kakao.Link.sendDefault가 정의되지 않았습니다.');
+    // }
+    Kakao.Share.sendDefault({
+        objectType: 'text',
+        text:
+        resultText,
+        link: {
+          // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+          mobileWebUrl: 'https://tubular-klepon-602186.netlify.app/',
+          webUrl: 'https://tubular-klepon-602186.netlify.app/',
+        },
+      });
 }
 
-function shareMessage() {
-    Kakao.Share.sendDefault({
-      objectType: 'text',
-      text:
-        '기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오톡 공유는 다른 템플릿을 이용해 보낼 수 있습니다.',
-      link: {
-        // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-        mobileWebUrl: 'https://developers.kakao.com',
-        webUrl: 'https://developers.kakao.com',
-      },
-    });
-  }
+
+  

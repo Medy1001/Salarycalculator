@@ -130,6 +130,17 @@
             <button id="shareButton" onclick="shareMessage()">공유하기</button>
         </div>
     </div>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
+      integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka" crossorigin="anonymous"></script>
+    <script>
+      Kakao.init('d1e3f2709bef0a354123c6a9a3017022'); // 사용하려는 앱의 JavaScript 키 입력
+      if (Kakao.isInitialized()) {
+          console.log('Kakao SDK가 초기화되었습니다.');
+          document.getElementById('shareButton').onclick = shareMessage; // 버튼 클릭 이벤트 설정
+      } else {
+          console.error('Kakao SDK 초기화 실패');
+      }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

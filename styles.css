@@ -8,6 +8,7 @@ body {
     align-items: flex-start;
     height: 100vh;
     padding: 50px;
+    flex-direction: row;
 }
 
 .container, .results-container {
@@ -15,10 +16,12 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin-right: 20px;
-    margin-top: 5px;
-    height: 550px;
+    width: 100%;
+    max-width: 600px;
+    margin: 10px;
+    flex: 1;
+    height: 100%;
+    padding-bottom: 10px;
 }
 
 #probation {
@@ -140,4 +143,62 @@ tbody tr:hover {
 
 .button-group button:last-child {
     margin-right: 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    
+    .container {
+        width: 100%;
+        max-width: none;
+        margin: 5px 0;
+        /* height: auto; */
+        margin-top: 50px;
+    }
+
+    .results-container {
+        width: 100%;
+        max-width: none;
+        margin: 5px 0;
+        /* height: auto; */
+        margin-top: 50px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    button {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+        margin: 5px 0;
+        /* height: auto; */
+        margin-top: 50px;
+    }
+
+    .results-container {
+        width: 100%;
+        max-width: none;
+        margin: 5px 0;
+        /* height: auto; */
+        margin-top: 50px;
+    }
+
+    button {
+        padding: 6px;
+    }
 }
