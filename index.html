@@ -1,146 +1,174 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>급여 계산기</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="calculator-container">
         <h1>급여 계산기</h1>
         <div class="input-group">
-            <label for="payType">급여 형태:</label>
-            <select id="payType">
-                <option value="hourly">시급</option>
-                <option value="daily">일급</option>
-                <option value="weekly">주급</option>
-                <option value="monthly">월급</option>
-                <option value="yearly">연봉</option>
+          <label for="payType">급여 형태:</label>
+          <select id="payType">
+            <option value="hourly">시급</option>
+            <option value="daily">일급</option>
+            <option value="weekly">주급</option>
+            <option value="monthly">월급</option>
+            <option value="yearly">연봉</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="amount">금액:</label>
+          <input type="number" id="amount" placeholder="금액 입력" />
+        </div>
+        <div class="input-group">
+          <label for="workHours">일 근무시간:</label>
+          <div class="work-hours-container">
+            <select id="workHoursHours">
+              <option value="0">0시간</option>
+              <option value="1">1시간</option>
+              <option value="2">2시간</option>
+              <option value="3">3시간</option>
+              <option value="4">4시간</option>
+              <option value="5">5시간</option>
+              <option value="6">6시간</option>
+              <option value="7">7시간</option>
+              <option value="8">8시간</option>
+              <option value="9">9시간</option>
+              <option value="10">10시간</option>
+              <option value="11">11시간</option>
+              <option value="12">12시간</option>
+              <option value="13">13시간</option>
+              <option value="14">14시간</option>
+              <option value="15">15시간</option>
+              <option value="16">16시간</option>
+              <option value="17">17시간</option>
+              <option value="18">18시간</option>
+              <option value="19">19시간</option>
+              <option value="20">20시간</option>
+              <option value="21">21시간</option>
+              <option value="22">22시간</option>
+              <option value="23">23시간</option>
+              <option value="24">24시간</option>
             </select>
-        </div>
-        <div class="input-group">
-            <label for="amount">금액:</label>
-            <input type="number" id="amount" placeholder="금액 입력">
-        </div>
-        <div class="input-group">
-            <label for="workHours">일 근무시간:</label>
-            <div style="display: flex; gap: 10px;">
-                <select id="workHoursHours">
-                    <option value="0">0시간</option>
-                    <option value="1">1시간</option>
-                    <option value="2">2시간</option>
-                    <option value="3">3시간</option>
-                    <option value="4">4시간</option>
-                    <option value="5">5시간</option>
-                    <option value="6">6시간</option>
-                    <option value="7">7시간</option>
-                    <option value="8">8시간</option>
-                    <option value="9">9시간</option>
-                    <option value="10">10시간</option>
-                    <option value="11">11시간</option>
-                    <option value="12">12시간</option>
-                    <option value="13">13시간</option>
-                    <option value="14">14시간</option>
-                    <option value="15">15시간</option>
-                    <option value="16">16시간</option>
-                    <option value="17">17시간</option>
-                    <option value="18">18시간</option>
-                    <option value="19">19시간</option>
-                    <option value="20">20시간</option>
-                    <option value="21">21시간</option>
-                    <option value="22">22시간</option>
-                    <option value="23">23시간</option>
-                    <option value="24">24시간</option>
-                </select>
-                <select id="workHoursMinutes">
-                    <option value="0">0분</option>
-                    <option value="10">10분</option>
-                    <option value="20">20분</option>
-                    <option value="30">30분</option>
-                    <option value="40">40분</option>
-                    <option value="50">50분</option>
-                </select>
-            </div>
-        </div>
-        <div class="input-group">
-            <label for="workDays">주당 근무일수:</label>
-            <select id="workDays">
-                <option value="1">1일</option>
-                <option value="2">2일</option>
-                <option value="3">3일</option>
-                <option value="4">4일</option>
-                <option value="5">5일</option>
-                <option value="6">6일</option>
-                <option value="7">7일</option>
+            <select id="workHoursMinutes">
+              <option value="0">0분</option>
+              <option value="10">10분</option>
+              <option value="20">20분</option>
+              <option value="30">30분</option>
+              <option value="40">40분</option>
+              <option value="50">50분</option>
             </select>
+          </div>
         </div>
         <div class="input-group">
-            <label for="tax">세금 적용:</label>
-            <select id="tax">
-                <option value="0">없음</option>
-                <option value="0.094">9.4% (4대보험)</option>
-                <option value="0.033">3.3% (프리랜서, 계약직)</option>
-            </select>
+          <label for="workDays">주당 근무일수:</label>
+          <select id="workDays">
+            <option value="1">1일</option>
+            <option value="2">2일</option>
+            <option value="3">3일</option>
+            <option value="4">4일</option>
+            <option value="5">5일</option>
+            <option value="6">6일</option>
+            <option value="7">7일</option>
+          </select>
         </div>
-        <div class="input-group" style="display: flex; align-items: center;">
-            <label for="probation" id="probationLabel">수습 여부:</label>
-            <input type="checkbox" id="probation">
+        <div class="input-group">
+          <label for="tax">세금 적용:</label>
+          <select id="tax">
+            <option value="0">없음</option>
+            <option value="0.094">9.4% (4대보험)</option>
+            <option value="0.033">3.3% (프리랜서, 계약직)</option>
+          </select>
+        </div>
+        <div class="input-group probation-group">
+          <label for="probation" id="probationLabel">수습 여부:</label>
+          <input type="checkbox" id="probation" />
         </div>
         <button onclick="calculate()">계산</button>
-    </div>
-    <div class="results-container">
+      </div>
+      <div class="results-container">
         <h2>입력방법 및 계산결과</h2>
-        <p>1. <span style="color: red;">월급</span>을 <span style="color: red;">시급</span>으로, <span style="color: red;">시급</span>을 <span style="color: red;">일급</span>, <span style="color: red;">월급</span>, <span style="color: red;">주급</span> 또는 <span style="color: red;">연봉</span>으로 계산합니다.</p>
-        <p>2. 먼저 급여 형태를 선택하신 후 금액을 입력하고, 근무 시간을 시간, 분 단위로 선택하고, 주별 근무일수를 선택한 다음 세금을 선택해주세요.</p>
-        <p>3. <span style="color: blue;">9.4%</span>는 <span style="color: blue;">4대보험</span> 기준이며, <span style="color: blue;">3.3%</span>는 <span style="color: blue;">프리랜서</span> 또는 <span style="color: blue;">계약직</span>(4대보험 미가입) 기준입니다.</p>
-        <p>4. <span style="color: blue;">수습 여부</span>를 선택하면 기본 급여에서 10%를 차감한 후 세액 공제를 하여 최종 결과값을 도출합니다.</p>
-        <table style="width: 100%; border-collapse: collapse;">
-            <thead>
-                <tr>
-                    <th style="text-align: left;">급여 유형</th>
-                    <th style="text-align: right;">금액</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>시급:</td>
-                    <td style="text-align: right;"><span id="hourlyResult"></span></td>
-                </tr>
-                <tr>
-                    <td>일급:</td>
-                    <td style="text-align: right;"><span id="dailyResult"></span></td>
-                </tr>
-                <tr>
-                    <td>주급:</td>
-                    <td style="text-align: right;"><span id="weeklyResult"></span></td>
-                </tr>
-                <tr>
-                    <td>월급:</td>
-                    <td style="text-align: right;"><span id="monthlyResult"></span></td>
-                </tr>
-                <tr>
-                    <td>연봉:</td>
-                    <td style="text-align: right;"><span id="yearlyResult"></span></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="button-group" style="display: flex; justify-content: space-between; margin-top: 20px;">
-            <button id="copyButton" onclick="copyResults()">복사하기</button>
-            <button id="shareButton" onclick="shareMessage()">공유하기</button>
+        <div class="instructions">
+          <p>
+            1. <span class="highlight">월급</span>을
+            <span class="highlight">시급</span>으로,
+            <span class="highlight">시급</span>을
+            <span class="highlight">일급</span>,
+            <span class="highlight">월급</span>,
+            <span class="highlight">주급</span> 또는
+            <span class="highlight">연봉</span>으로 계산합니다.
+          </p>
+          <p>
+            2. 먼저 급여 형태를 선택하신 후 금액을 입력하고, 근무 시간을 시간,
+            분 단위로 선택하고, 주별 근무일수를 선택한 다음 세금을 선택해주세요.
+          </p>
+          <p>
+            3. <span class="highlight-blue">9.4%</span>는
+            <span class="highlight-blue">4대보험</span> 기준이며,
+            <span class="highlight-blue">3.3%</span>는
+            <span class="highlight-blue">프리랜서</span> 또는
+            <span class="highlight-blue">계약직</span>(4대보험 미가입)
+            기준입니다.
+          </p>
+          <p>
+            4. <span class="highlight-blue">수습 여부</span>를 선택하면 기본
+            급여에서 10%를 차감한 후 세액 공제를 하여 최종 결과값을 도출합니다.
+          </p>
         </div>
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>급여 유형</th>
+              <th>금액</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>시급:</td>
+              <td><span id="hourlyResult"></span></td>
+            </tr>
+            <tr>
+              <td>일급:</td>
+              <td><span id="dailyResult"></span></td>
+            </tr>
+            <tr>
+              <td>주급:</td>
+              <td><span id="weeklyResult"></span></td>
+            </tr>
+            <tr>
+              <td>월급:</td>
+              <td><span id="monthlyResult"></span></td>
+            </tr>
+            <tr>
+              <td>연봉:</td>
+              <td><span id="yearlyResult"></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="button-group">
+          <button id="copyButton" onclick="copyResults()">복사하기</button>
+          <button id="shareButton" onclick="shareMessage()">공유하기</button>
+        </div>
+      </div>
     </div>
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
-      integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka" crossorigin="anonymous"></script>
+    <script
+      src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
+      integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      Kakao.init('d1e3f2709bef0a354123c6a9a3017022'); // 사용하려는 앱의 JavaScript 키 입력
+      Kakao.init("d1e3f2709bef0a354123c6a9a3017022");
       if (Kakao.isInitialized()) {
-          console.log('Kakao SDK가 초기화되었습니다.');
-          document.getElementById('shareButton').onclick = shareMessage; // 버튼 클릭 이벤트 설정
+        console.log("Kakao SDK가 초기화되었습니다.");
+        document.getElementById("shareButton").onclick = shareMessage;
       } else {
-          console.error('Kakao SDK 초기화 실패');
+        console.error("Kakao SDK 초기화 실패");
       }
     </script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
