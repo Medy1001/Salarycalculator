@@ -97,13 +97,14 @@ button:hover {
 
 .results-table {
   width: 100%;
+  text-align: right;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
 .results-table th,
 .results-table td {
-  padding: 10px;
+  padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }

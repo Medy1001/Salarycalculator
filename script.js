@@ -60,12 +60,24 @@ function calculate() {
 }
 
 function copyResults() {
+    const payTypeElement = document.getElementById('payType');
+    const payTypeMap = {
+        'hourly': '시급',
+        'daily': '일급',
+        'weekly': '주급',
+        'monthly': '월급',
+        'yearly': '연봉'
+    };
+    const payType = payTypeMap[payTypeElement.value];
+    const amount = parseFloat(document.getElementById('amount').value);
+
     const results = `
-        시급: ${document.getElementById('hourlyResult').textContent}
-        일급: ${document.getElementById('dailyResult').textContent}
-        주급: ${document.getElementById('weeklyResult').textContent}
-        월급: ${document.getElementById('monthlyResult').textContent}
-        연봉: ${document.getElementById('yearlyResult').textContent}
+        선택한 '${payType}' ${amount.toLocaleString('ko-KR')}원에 대한 급여형태별 계산결과는 다음과 같습니다.
+        시급: ${document.getElementById('hourlyResult').innerText.padStart(10)}
+        일급: ${document.getElementById('dailyResult').innerText.padStart(10)}
+        주급: ${document.getElementById('weeklyResult').innerText.padStart(10)}
+        월급: ${document.getElementById('monthlyResult').innerText.padStart(10)}
+        연봉: ${document.getElementById('yearlyResult').innerText.padStart(10)}
     `;
     navigator.clipboard.writeText(results).then(() => {
         alert("결과값이 복사되었습니다.");
@@ -73,46 +85,34 @@ function copyResults() {
 }
 
 function shareMessage() {
-    if (typeof Kakao === 'undefined' || !Kakao.isInitialized()) {
-        console.error('Kakao SDK가 초기화되지 않았습니다.');
-        return;
-    }
+    const payTypeElement = document.getElementById('payType');
+    const payTypeMap = {
+        'hourly': '시급',
+        'daily': '일급',
+        'weekly': '주급',
+        'monthly': '월급',
+        'yearly': '연봉'
+    };
+    const payType = payTypeMap[payTypeElement.value];
+    const amount = parseFloat(document.getElementById('amount').value);
 
     const resultText = `
-        시급: ${document.getElementById('hourlyResult').innerText}
-        일급: ${document.getElementById('dailyResult').innerText}
-        주급: ${document.getElementById('weeklyResult').innerText}
-        월급: ${document.getElementById('monthlyResult').innerText}
-        연봉: ${document.getElementById('yearlyResult').innerText}
+        선택한 '${payType}' ${amount.toLocaleString('ko-KR')}원에 대한 급여형태별 계산결과는 다음과 같습니다.
+        시급: ${document.getElementById('hourlyResult').innerText.padStart(10)}
+        일급: ${document.getElementById('dailyResult').innerText.padStart(10)}
+        주급: ${document.getElementById('weeklyResult').innerText.padStart(10)}
+        월급: ${document.getElementById('monthlyResult').innerText.padStart(10)}
+        연봉: ${document.getElementById('yearlyResult').innerText.padStart(10)}
     `;
     
-    // if (Kakao.Link && Kakao.Link.sendDefault) {
-    //     Kakao.Link.sendDefault({
-    //         objectType: 'text',
-    //         text: resultText,
-    //         link: {
-    //             webUrl: 'https://tubular-klepon-602186.netlify.app/', // 공유할 웹사이트 URL
-    //             mobileWebUrl: 'https://tubular-klepon-602186.netlify.app/',
-    //         },
-    //         buttonTitle: '결과 보기'
-    //     }).then(() => {
-    //         console.log('공유가 성공적으로 전송되었습니다.');
-    //     }).catch((error) => {
-    //         console.error('공유 전송 중 오류 발생:', error);
-    //     });
-    // } else {
-    //     console.error('Kakao.Link.sendDefault가 정의되지 않았습니다.');
-    // }
     Kakao.Share.sendDefault({
         objectType: 'text',
-        text:
-        resultText,
+        text: resultText,
         link: {
-          // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-          mobileWebUrl: 'https://tubular-klepon-602186.netlify.app/',
-          webUrl: 'https://tubular-klepon-602186.netlify.app/',
+            mobileWebUrl: 'https://tubular-klepon-602186.netlify.app/',
+            webUrl: 'https://tubular-klepon-602186.netlify.app/',
         },
-      });
+    });
 }
 
 
